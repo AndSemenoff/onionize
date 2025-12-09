@@ -1,0 +1,33 @@
+version: 2
+updates:
+  # Update Rust dependencies managed by Cargo
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule:
+      interval: "weekly"     # Every week
+      day: "monday"          # On Mondays
+      time: "06:00"          # At 06:00 AM
+      timezone: "Etc/UTC"
+    
+    # Set limit on open pull requests to avoid overload
+    open-pull-requests-limit: 10
+    
+    groups:
+      # Group 1: All arti and tor dependencies in one PR
+      arti-stack:
+        patterns:
+          - "arti-*"
+          - "tor-*"
+      # Group 2: All
+      other-dependencies:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "arti-*"
+          - "tor-*"
+
+  # Update GitHub Actions (workflows CI/CD)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"

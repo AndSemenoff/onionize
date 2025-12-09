@@ -1,0 +1,46 @@
+name: Clippy Linter
+
+# Events that trigger this workflow
+on:
+  # Trigger on pushes to main or master branches
+  push:
+    branches: [ "main", "master" ]
+  # Trigger on pull requests to main or master branches
+  pull_request:
+    branches: [ "main", "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  clippy_check:
+    name: Run Clippy Linter
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step: Check out the repository
+      # This step uses the actions/checkout action to clone the repository
+      - name: Check out repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+
+      # Step: Install Rust with Clippy
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: stable
+          components: clippy, rustfmt
+
+      # Step: Cache Cargo dependencies
+      # Caches the Cargo registry and build artifacts between runs.
+      - name: Cache Cargo dependencies
+        uses: Swatinem/rust-cache@779680da715d629ac1d338a641029a2f4372abb5 # v2.8.2
+
+      # Step: Run Clippy
+      # This step runs Clippy with specific flags to ensure code quality.
+      # Explanation of flags:
+      # --all-targets: Checks all targets (binaries, tests, examples, benches)
+      # --all-features: Enables all features for the crate during the check
+      # -- -D warnings: Treats all warnings as errors
+      # This ensures that the code adheres to strict linting rules.
+      - name: Run Clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings

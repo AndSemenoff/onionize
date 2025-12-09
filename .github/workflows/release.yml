@@ -1,0 +1,101 @@
+name: Release
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+
+  build-release:
+    name: build-release
+    needs: ['create-release']
+    runs-on: ${{ matrix.os }}
+    env:
+      # ВАЖНО: замените 'arti-onion-proxy' на точное имя вашего бинарника из Cargo.toml
+      # В вашем файле это: arti-onion-proxy
+      CARGO_BINARY_NAME: arti-onion-proxy
+      RUST_BACKTRACE: 1
+    strategy:
+      matrix:
+        build: [linux, macos, windows]
+        include:
+          - build: linux
+            os: ubuntu-latest
+            rust: stable
+            target: x86_64-unknown-linux-gnu
+          - build: macos
+            os: macos-latest
+            rust: stable
+            target: x86_64-apple-darwin
+          - build: windows
+            os: windows-latest
+            rust: stable
+            target: x86_64-pc-windows-msvc
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.rust }}
+          targets: ${{ matrix.target }}
+
+      - name: Build release binary
+        run: cargo build --verbose --release --target ${{ matrix.target }}
+
+      - name: Build archive
+        shell: bash
+        run: |
+          # Определяем имя выходного файла и архива
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            bin_ext=".exe"
+            archive_ext=".zip"
+          else
+            bin_ext=""
+            archive_ext=".tar.gz"
+          fi
+          
+          # Формируем имя архива: arti-onion-proxy-v0.1.0-x86_64-linux.tar.gz
+          # github.ref_name содержит имя тега (например, v0.1.0)
+          archive_name="${{ env.CARGO_BINARY_NAME }}-${{ github.ref_name }}-${{ matrix.target }}$archive_ext"
+          
+          # Создаем временную папку для упаковки
+          mkdir -p dist
+          
+          # Копируем бинарник и лицензии
+          cp "target/${{ matrix.target }}/release/${{ env.CARGO_BINARY_NAME }}$bin_ext" "dist/"
+          cp README.md "dist/"
+          cp LICENSE-MIT "dist/"
+          cp LICENSE-APACHE "dist/"
+
+          # Переходим в папку и архивируем
+          cd dist
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            7z a "../$archive_name" *
+          else
+            tar -czf "../$archive_name" *
+          fi
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          # Используем wildcard, чтобы загрузить созданный архив
+          files: ${{ env.CARGO_BINARY_NAME }}-*-${{ matrix.target }}*

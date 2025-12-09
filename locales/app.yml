@@ -1,0 +1,179 @@
+_version: 2
+cli:
+  usage:
+    en: "Usage"
+    ru: "Использование"
+  options:
+    en: "Options"
+    ru: "Опции"
+  about:
+    en: "An easy-to-use Tor Onion Proxy written in Rust."
+    ru: "Простой в использовании Tor Onion Proxy, написанный на Rust."
+  version:
+    en: "Show version information"
+    ru: "Показать информацию о версии"
+  restricted_help:
+    en: "Auto-generate keys and enable restricted access (ephemeral)"
+    ru: "Автоматически сгенерировать ключи и включить ограниченный доступ (эфемерно)"
+  help_info:
+    en: "Print help information"
+    ru: "Показать справочную информацию"
+  port_help:
+    en: "Local port to proxy"
+    ru: "Локальный порт для проксирования"
+  qr_help:
+    en: "Show QR code in terminal"
+    ru: "Показать QR-код в терминале"
+  verbose_help:
+    en: "Enable verbose logging"
+    ru: "Включить подробное логирование"
+  host_help:
+    en: "Local host to proxy"
+    ru: "Локальный хост для проксирования"
+  nickname_help:
+    en: "Nickname of the Tor relay to use as a nickname server"
+    ru: "Никнейм Tor-реле для использования в качестве сервера с ником"
+  auth_help:
+    en: "Enable Client Authorization using a public key string"
+    ru: "Включить авторизацию клиентов, используя строку с публичным ключом"
+  auth_error:
+    en: "Invalid auth string format. Expected: descriptor:x25519:<key>"
+    ru: "Неверный формат строки авторизации. Ожидается: descriptor:x25519:<ключ>"
+
+main:
+  starting:
+    en: "Starting Arti Onion Proxy"
+    ru: "Запуск Arti Onion Proxy"
+  target_address:
+    en: "Proxy target address: %{addr}"
+    ru: "Цель проксирования: %{addr}"
+  localhost_conversion:
+    en: "localhost automatically converted to 127.0.0.1"
+    ru: "localhost автоматически преобразован в 127.0.0.1"
+  nickname_server:
+    en: "Using nickname server %{nickname}"
+    ru: "Используется сервер с ником %{nickname}"
+  o_created:
+    en: "✅ Service available at: http://%{o_addr}"
+    ru: "✅ Сервис доступен: http://%{o_addr}"
+  redirecting_to:
+    en: "🔗 Redirecting to: %{addr}"
+    ru: "🔗 Перенаправляем на: %{addr}"
+  qrcode:
+    en: "\nScan this to open via Tor Browser Mobile:\n%{image}"
+    ru: "\nОтсканируйте это, чтобы открыть через Tor Browser Mobile:\n%{image}"
+  notgen:
+    en: "Onion address not yet generated"
+    ru: "Onion-адрес еще не сгенерирован"
+  long:
+    en: "QR code is too long to display"
+    ru: "QR-код слишком длинный для отображения"
+  quit:
+    en: "Received Ctrl+C, shutting down gracefully..."
+    ru: "Введен Ctrl+C, завершаем работу..."
+  restricted_info:
+    en: "🔒 Restricted Discovery enabled."
+    ru: "🔒 Включено ограниченное обнаружение."
+  restricted_client:
+    en: "Client Key: %{client_key}."
+    ru: "Ключ: %{client_key}"
+  errors:
+    loop_crashed:
+      en: "Proxy loop crashed"
+      ru: "Цикл прокси завершился с ошибкой"
+
+server_status:
+  en: "Server is running on %{addr}"
+  ru: "Сервер запущен на %{addr}"
+
+starting_tor_client:
+  en: "Starting Tor client (bootstrap)..."
+  ru: "Подключаемся к сети Tor (bootstrap)..."
+
+tor_client_started:
+  en: "Successfully connected to Tor!"
+  ru: "Успешное подключение к Tor!"
+
+errors:
+  service_unreachable:
+    en: "Local service unreachable: %{target}"
+    ru: "Локальный сервис недоступен: %{target}"
+
+tor:
+  initializing:
+    en: "Initializing Tor client..."
+    ru: "Инициализация Tor-клиента..."
+  starting_tor_client:
+    en: "Starting Tor client (bootstrap)..."
+    ru: "Подключаемся к сети Tor (bootstrap)..."
+  tor_client_started:
+    en: "Successfully connected to Tor!"
+    ru: "Успешное подключение к Tor!"
+  restricted_enabled: 
+    en: "🔒 Restricted Discovery enabled (%{nick} authorized)."
+    ru: "🔒 Включено ограниченное обнаружение (авторизован %{nick})."
+  errors:
+    progress_bar:
+      en: "Failed to set progress bar template"
+      ru: "Не удалось установить шаблон индикатора прогресса"
+    invalid_nickname:
+      en: "Invalid nickname"
+      ru: "Некорректный никнейм" 
+    service_config:
+      en: "Error in service configuration"
+      ru: "Ошибка конфигурации сервиса"
+    launch_service:
+      en: "Failed to launch service"
+      ru: "Не удалось запустить сервис"
+    bootstrap:
+      en: "Bootstrap error"
+      ru: "Ошибка bootstrap"
+    bootstrap_failed:
+      en: "Tor bootstrap failed"
+      ru: "Не удалось выполнить bootstrap Tor"
+    dirs:
+      en: "Failed to determine project directories"
+      ru: "Не удалось определить директории проекта"
+
+proxy:
+  connect:
+    en: "Incoming connection..."
+    ru: "Входящее соединение..."
+  errors:
+    stream_req:
+      en: "Error establishing tunnel: %{req_err}"
+      ru: "Ошибка установки туннеля: %{req_err}"
+    client_error:
+      en: "Failed to accept stream: %{err}" 
+      ru: "Не удалось принять поток: %{err}"
+    proxy:
+      en: "Failed to spawn proxy task"
+      ru: "Не удалось запустить задачу проксирования"
+    task: 
+      en: "Failed to spawn request handling task"
+      ru: "Не удалось запустить задачу обработки запросов"
+    local_address:
+      en: "Invalid local service address: %{target}"
+      ru: "Некорректный адрес локального сервиса: %{target}"
+    proxy_error:
+      en: "Proxy error: %{error}" 
+      ru: "Ошибка проксирования: %{error}"
+keygen:
+  beginning:
+    en: "🔑 Generated x25519 Keypair for Tor Client Authorization\n"
+    ru: "🔑 Генерация новых эфемерных ключей x25519 авторизации клиента..."
+  public_text:
+    en: "--- Public Key (Server Side) ---"
+    ru: "--- Публичный ключ (серверная сторона) ---"
+  public_format_text:
+    en: "Share this with the onion service provider.\nFormat: descriptor:x25519:<public_key>\nString: %{server_str}"
+    ru: "Поделитесь этим с провайдером лукового сервиса.\nФормат: descriptor:x25519:<public_key>\nСтрока: %{server_str}"
+  private_text:
+    en: "--- Private Key (Client Side) ---"
+    ru: "--- Приватный ключ (клиентская сторона) ---"
+  secret_string:
+    en: "Keep this secret! Put this in your Tor Client configuration.\nFormat: <public_key>:descriptor:x25519:<private_key>\nString: %{secret_str}"
+    ru: "Храните это в секрете! Поместите это в конфигурацию вашего Tor-клиента.\nФормат: <public_key>:descriptor:x25519:<private_key>\nСтрока: %{secret_str}"
+  secret_key:
+    en: "Private Key (Client Side): %{secret_b32}"
+    ru: "Приватный ключ (клиентская сторона): %{secret_b32}"
