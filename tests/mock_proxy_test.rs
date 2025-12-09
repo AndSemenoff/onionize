@@ -1,9 +1,9 @@
 // tests/mock_proxy_test.rs
 
-use create::proxy;
 use futures::channel::oneshot;
 use futures::task::SpawnExt;
 use futures::{AsyncReadExt, AsyncWriteExt, StreamExt};
+use onionize::proxy;
 use std::net::{IpAddr, SocketAddr};
 use tor_rtcompat::{NetStreamListener, NetStreamProvider, ToplevelBlockOn};
 use tor_rtmock::{MockRuntime, net::MockNetwork};

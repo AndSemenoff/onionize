@@ -14,6 +14,25 @@ use tor_hsservice::{HsNickname, RunningOnionService, config::OnionServiceConfigB
 use tor_rtcompat::Runtime;
 use tracing::info;
 
+/// Bootstraps a connection to the Tor network.
+///
+/// This function initializes the Arti client, sets up a progress bar to track the
+/// bootstrap status, and waits until the client is ready for traffic.
+///
+/// # Arguments
+///
+/// * `runtime` - The asynchronous runtime (e.g., Tokio) to use for the client.
+/// * `_config` - Optional configuration overrides (currently unused/reserved).
+///
+/// # Returns
+///
+/// Returns a ready-to-use [`TorClient`] or an error if the bootstrap process fails.
+///
+/// # Errors
+///
+/// This function will return an error if:
+/// * The project directories cannot be determined.
+/// * The Tor bootstrap process encounters a network or configuration error.
 pub async fn start_tor_client<R: Runtime>(
     runtime: R,
     _config: Option<TorClientConfig>,
@@ -87,6 +106,23 @@ pub async fn start_tor_client<R: Runtime>(
     Ok(tor_client)
 }
 
+/// Launches a new Onion Service.
+///
+/// This function configures and publishes a hidden service with the specified nickname.
+/// It also handles optional Client Authorization (restricted discovery).
+///
+/// # Arguments
+///
+/// * `client` - A bootstrapped `TorClient`.
+/// * `nickname_str` - A nickname for the service (must be a valid Tor nickname).
+/// * `client_auth_str` - Optional authorization string in the format `descriptor:x25519:<KEY>`.
+///   If provided, only clients with the corresponding private key can access the service.
+///
+/// # Returns
+///
+/// Returns a tuple containing:
+/// 1. An `Arc` to the [`RunningOnionService`] (contains the onion address).
+/// 2. A stream of incoming rendezvous requests (`RendRequest`).
 pub async fn launch_onion_service<R: Runtime>(
     client: &TorClient<R>,
     nickname_str: &str,

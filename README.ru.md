@@ -2,6 +2,7 @@
 ![Rust Edition](https://img.shields.io/badge/Rust-2024-orange?logo=rust)
 [![License](https://img.shields.io/badge/License-MIT_or_Apache-blue?style=flat-square)](LICENSE-MIT)
 ![status](https://img.shields.io/badge/Status-Active-blue)
+[![GitHub issues](https://img.shields.io/github/issues/andsemenoff/onionize)](https://github.com/andsemenoff/onionize/issues)
 
 ### Идея
 

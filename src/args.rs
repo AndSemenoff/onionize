@@ -1,15 +1,16 @@
 // src/args.rs
 use clap::Parser;
-
+/// Command-line arguments for the application.
 #[derive(Parser, Debug)]
-#[command(name = "arti-onion-proxy")]
+#[command(name = "onionize")]
 #[command(version, about = "Expose local ports via Tor Onion Services", long_about = None)]
 pub struct Args {
     /// Local port to proxy
     #[arg(short, long, default_value_t = 3000)]
     pub port: u16,
 
-    /// Host or IP address
+    /// Local host or IP address to forward traffic to.
+    /// Defaults to `127.0.0.1`.
     #[arg(short = 'H', long, default_value = "127.0.0.1")]
     pub host: String,
 
@@ -29,7 +30,7 @@ pub struct Args {
     #[arg(long, default_value_t = false)]
     pub keygen: bool,
 
-    /// Add authorized client (format: descriptor:x25519:<pubkey>)
+    /// Add authorized client (format: `descriptor:x25519:<pubkey>`)
     /// Enables restricted access (Client Auth).
     #[arg(long)]
     pub auth: Option<String>,
@@ -41,7 +42,10 @@ pub struct Args {
 }
 
 impl Args {
-    /// Returns normalized host (converts "localhost" to "127.0.0.1")
+    /// Returns the normalized host address.
+    ///
+    /// Specifically, this converts "localhost" to "127.0.0.1" to ensure compatibility
+    /// with the Arti runtime which strictly requires IP addresses.
     pub fn get_normalized_host(&self) -> String {
         if self.host.eq_ignore_ascii_case("localhost") {
             "127.0.0.1".to_string()
@@ -50,7 +54,10 @@ impl Args {
         }
     }
 
-    /// Returns effective nickname, generating a random one if default is used
+    /// Returns the effective nickname for the service.
+    ///
+    /// If the user did not provide a custom nickname, a random one is generated
+    /// (e.g., "proxy-a1b2c3") to prevent collisions.
     pub fn get_effective_nickname(&self) -> String {
         if self.nickname == "my-ephemeral-service" {
             // Generate a random nickname

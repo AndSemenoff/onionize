@@ -7,10 +7,7 @@ mod tests {
 
     #[test]
     fn test_translations_starting_locale_en() {
-        assert_eq!(
-            t!("main.starting", locale = "en"),
-            "Starting Arti Onion Proxy"
-        );
+        assert_eq!(t!("main.starting", locale = "en"), "Starting Onionize");
     }
     #[test]
     fn test_translations_invalid_nickname_locale_en() {
@@ -20,10 +17,7 @@ mod tests {
 
     #[test]
     fn test_translations_starting_locale_ru() {
-        assert_eq!(
-            t!("main.starting", locale = "ru"),
-            "Запуск Arti Onion Proxy"
-        );
+        assert_eq!(t!("main.starting", locale = "ru"), "Запуск Onionize");
     }
 
     #[test]

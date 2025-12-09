@@ -4,6 +4,7 @@
 ![Rust Edition](https://img.shields.io/badge/Rust-2024-orange?logo=rust)
 [![License](https://img.shields.io/badge/License-MIT_or_Apache-blue?style=flat-square)](LICENSE-MIT)
 ![status](https://img.shields.io/badge/Status-Active-blue)
+[![GitHub issues](https://img.shields.io/github/issues/andsemenoff/onionize)](https://github.com/andsemenoff/onionize/issues)
 
 A command-line tool that creates **ephemeral Tor Onion Services** to proxy local TCP ports.
 
@@ -46,7 +47,7 @@ cargo run --release -- --help
 
 ### Install via Cargo
 
-```
+```bash
 cargo install --path .
 ```
 
@@ -56,7 +57,7 @@ cargo install --path .
 
 Expose your local server running on port 3000:
 
-```
+```bash
 onionize --port 3000
 ```
 Wait for the bootstrap to finish. You will see a link like `http://[random-string].onion`
@@ -64,11 +65,11 @@ Wait for the bootstrap to finish. You will see a link like `http://[random-strin
 ### Show QR Code
 
 To easily share the link with a mobile device:
-```
+```bash
 onionize -p 3000 --qr
 ```
 
-![demo](./assets/onionize_picture_main.png)
+![onionize demo](https://raw.githubusercontent.com/AndSemenoff/onionize/refs/heads/master/assets/onionize_picture_main.png)
 
 ### 🔒 Restricted Access (Client Authorization)
 
@@ -77,7 +78,7 @@ If you want to prevent random people from accessing your local service, you can 
 ### Option A: Ephemeral Restricted Mode (Easiest)
 
 Automatically generate keys for this session only:
-```
+```bash
 onionize -p 3000 --restricted
 ```
 
@@ -86,13 +87,13 @@ The tool will output a Client Key string. You must add this key to your client's
 ### Option B: Manual Key Management
 
 1. Generate keys:
-    ```
+    ```bash
     onionize --keygen
     ```
     This will output a Public Key (for the server) and a Private Key (for the client).
 
 2. Run the proxy with the authorized public key:
-    ```
+    ```bash
     onionize -p 3000 --auth "descriptor:x25519:<YOUR_PUBLIC_KEY>"
     ```
 
@@ -112,14 +113,14 @@ The tool will output a Client Key string. You must add this key to your client's
 ## 🌍 Localization
 
 The interface language is determined automatically based on your system locale. To force a specific language, set the ARTI_LANG environment variable:
-```
+```bash
 ARTI_LANG=ru onionize
 ```
 
 ### Development
 
 To test the proxy locally, you can start a simple file server in another terminal:
-```
+```bash
 python3 -m http.server 3000
 ```
 
@@ -146,7 +147,7 @@ Contributions are welcome!
 4.  Push to the branch.
 5.  Open a Pull Request.
 
-## 📄 License
+## ⚖️ License
 
 This project is licensed under either of:
 

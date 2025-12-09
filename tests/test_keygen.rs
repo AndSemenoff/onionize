@@ -1,5 +1,5 @@
 // tests/test_keygen.rs
-use create::keygen;
+use onionize::keygen;
 
 #[test]
 fn test_keygen_format_structure() {

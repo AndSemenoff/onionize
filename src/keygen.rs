@@ -2,14 +2,26 @@ use anyhow::Result;
 use rust_i18n::t;
 use x25519_dalek::{PublicKey, StaticSecret};
 
-/// Struct to hold generated Tor keys
+/// A container for generated Tor authorization keys.
+///
+/// Holds the keys in various formats required for server and client configuration.
 pub struct TorKeys {
-    pub server_string: String, // String for server-side configuration
-    pub client_string: String, // String for client-side configuration
-    pub public_b32: String,    // Public key in Base32 format
+    /// The formatted string for the server-side configuration (public key).
+    /// Format: `descriptor:x25519:<PUBLIC_KEY_BASE32>`
+    pub server_string: String,
+
+    /// The formatted string for the client-side configuration (private key).
+    /// Format: `<PUBLIC_KEY_BASE32>:descriptor:x25519:<PRIVATE_KEY_BASE32>`
+    pub client_string: String,
+
+    /// The raw public key encoded in Base32 (RFC 4648 no padding).
+    pub public_b32: String,
 }
 
-/// Generates a new x25519 keypair and returns the formatted strings
+/// Generates a new ephemeral x25519 keypair for Client Authorization.
+///
+/// This creates a random static secret and derives the public key, returning
+/// them in the format expected by Tor configuration files.
 pub fn generate_keys() -> TorKeys {
     // Generate a new x25519 static secret
     let secret = StaticSecret::random();
@@ -37,7 +49,9 @@ pub fn generate_keys() -> TorKeys {
     }
 }
 
-/// Prints the generated keypair to the console
+/// Generates a keypair and prints the formatted strings to stdout.
+///
+/// Used by the CLI command `--keygen`.
 pub fn print_new_keypair() -> Result<()> {
     let keys = generate_keys();
 

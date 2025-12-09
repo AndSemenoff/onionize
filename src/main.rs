@@ -4,8 +4,8 @@ mod tor;
 use anyhow::Context;
 use anyhow::Result;
 use clap::{Arg, ArgAction, CommandFactory, FromArgMatches};
-use create::args::Args;
-use create::keygen;
+use onionize::args::Args;
+use onionize::keygen;
 use qrcode::QrCode;
 use qrcode::render::unicode;
 use safelog::DisplayRedacted;
@@ -18,7 +18,7 @@ rust_i18n::i18n!("./locales");
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    create::utils::setup_locale();
+    onionize::utils::setup_locale();
 
     let mut command: clap::Command = Args::command();
 

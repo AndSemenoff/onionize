@@ -9,7 +9,16 @@ use tor_hsservice::RendRequest;
 use tor_rtcompat::Runtime;
 use tracing::{debug, info, warn};
 
-/// Main proxy loop: handles incoming rendezvous requests
+/// Runs the main proxy loop, accepting incoming Tor connections.
+///
+/// This function continuously listens for incoming rendezvous requests from the Tor network,
+/// accepts them, and spawns a new task to handle each connection.
+///
+/// # Arguments
+///
+/// * `runtime` - The runtime used to spawn tasks and connect to local sockets.
+/// * `rendezvous_requests` - The stream of incoming requests from the Onion Service.
+/// * `local_target` - The local address to forward traffic to (e.g., "127.0.0.1:8080").
 pub async fn run_proxy_loop<R>(
     runtime: R,
     mut rendezvous_requests: impl Stream<Item = RendRequest> + Unpin,
@@ -69,9 +78,16 @@ pub async fn run_proxy_loop<R>(
     }
 }
 
-/// Handles a single connection: proxies data between Tor stream and local target
-/// S is the type of the Tor stream
-/// R is the runtime type
+/// Handles a single connection by bridging a Tor stream and a local TCP socket.
+///
+/// This function establishes a connection to the `local_target` and copies data
+/// bidirectionally between the Tor stream and the local socket until one side closes.
+///
+/// # Arguments
+///
+/// * `runtime` - The runtime used to initiate the local TCP connection.
+/// * `tor_stream` - The incoming stream from the Tor network.
+/// * `local_target` - The address of the local service.
 pub async fn handle_connection<R, S>(runtime: R, tor_stream: S, local_target: &str) -> Result<()>
 where
     R: Runtime,

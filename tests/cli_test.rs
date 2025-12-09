@@ -1,6 +1,6 @@
 // tests/cli_test.rs
 use clap::Parser;
-use create::args::Args;
+use onionize::args::Args;
 
 #[test]
 fn test_default_args() {

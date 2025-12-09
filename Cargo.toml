@@ -2,12 +2,19 @@
 name = "onionize"
 version = "0.1.1"
 edition = "2024"
+readme = "README.md"
+documentation = "https://docs.rs/onionize"
 repository = "https://github.com/andsemenoff/onionize"
 description = "A CLI tool for creating ephemeral Tor Onion Services to proxy local ports."
 categories = ["command-line-utilities", "network-programming"]
 license = "MIT OR Apache-2.0"
 keywords = ["tor", "proxy", "onion", "tunnel", "cli"]
 include = ["src/**/*", "LICENSE-*", "README.md", "locales/**/*", "assets/**/*"]
+exclude = [ 
+    ".github/*",
+    "tests/*",
+    ".gitignore"
+]
 
 [dependencies]
 # https://github.com/rusqlite/rusqlite for SQLite support
@@ -87,7 +94,7 @@ base32 = "0.5.1"
 tor-llcrypto = "0.37.0"
 
 [lib]
-name = "create"           # The name of the library
+name = "onionize"           # The name of the library
 path = "src/lib.rs"
 
 [dev-dependencies]

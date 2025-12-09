@@ -42,8 +42,8 @@ cli:
 
 main:
   starting:
-    en: "Starting Arti Onion Proxy"
-    ru: "Запуск Arti Onion Proxy"
+    en: "Starting Onionize"
+    ru: "Запуск Onionize"
   target_address:
     en: "Proxy target address: %{addr}"
     ru: "Цель проксирования: %{addr}"

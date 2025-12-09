@@ -1,7 +1,7 @@
 // tests/test_tor.rs
 
 use arti_client::{TorClient, TorClientConfig};
-use create::tor;
+use onionize::tor;
 use rust_i18n::set_locale;
 // Import Runtime for generics and ToplevelBlockOn for calling
 use tor_rtcompat::{Runtime, ToplevelBlockOn};
