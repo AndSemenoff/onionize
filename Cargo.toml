@@ -1,6 +1,6 @@
 [package]
 name = "onionize"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 repository = "https://github.com/andsemenoff/arti-onion-proxy"
 description = "A CLI tool for creating ephemeral Tor Onion Services to proxy local ports."
