@@ -13,17 +13,17 @@ updates:
     open-pull-requests-limit: 10
     
     groups:
-      # Group 1: All arti and tor dependencies in one PR
-      arti-stack:
+      # Group 1: All onionize and tor dependencies in one PR
+      onionize stack:
         patterns:
-          - "arti-*"
+          - "onionize*"
           - "tor-*"
       # Group 2: All
       other-dependencies:
         patterns:
           - "*"
         exclude-patterns:
-          - "arti-*"
+          - "onionize*"
           - "tor-*"
 
   # Update GitHub Actions (workflows CI/CD)
