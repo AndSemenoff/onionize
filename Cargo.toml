@@ -2,7 +2,7 @@
 name = "onionize"
 version = "0.1.1"
 edition = "2024"
-repository = "https://github.com/andsemenoff/arti-onion-proxy"
+repository = "https://github.com/andsemenoff/onionize"
 description = "A CLI tool for creating ephemeral Tor Onion Services to proxy local ports."
 categories = ["command-line-utilities", "network-programming"]
 license = "MIT OR Apache-2.0"

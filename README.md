@@ -1,4 +1,4 @@
-# Arti Onion Proxy
+# Onionize
 
 [![Clippy Check](https://github.com/andsemenoff/onionize/actions/workflows/clippy.yml/badge.svg)](https://github.com/andsemenoff/onionize/actions/workflows/clippy.yml)
 ![Rust Edition](https://img.shields.io/badge/Rust-2024-orange?logo=rust)
