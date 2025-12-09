@@ -5,6 +5,7 @@
 [![License](https://img.shields.io/badge/License-MIT_or_Apache-blue?style=flat-square)](LICENSE-MIT)
 ![status](https://img.shields.io/badge/Status-Active-blue)
 [![GitHub issues](https://img.shields.io/github/issues/andsemenoff/onionize)](https://github.com/andsemenoff/onionize/issues)
+[![Security Audit](https://github.com/andsemenoff/onionize/actions/workflows/audit.yml/badge.svg)](https://github.com/andsemenoff/onionize/actions/workflows/audit.yml)
 
 A command-line tool that creates **ephemeral Tor Onion Services** to proxy local TCP ports.
 
