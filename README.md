@@ -11,7 +11,7 @@ A command-line tool that creates **ephemeral Tor Onion Services** to proxy local
 
 Think of it as a decentralized, private alternative to `ngrok`, powered by [Arti](https://gitlab.torproject.org/tpo/core/arti) (the official Tor implementation in Rust).
 
-[🇷🇺 Читать на русском](README.ru.md)
+[🇷🇺 Читать на русском](https://github.com/AndSemenoff/onionize/blob/master/README.ru.md)
 
 ---
 

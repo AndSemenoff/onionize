@@ -9,12 +9,7 @@ description = "A CLI tool for creating ephemeral Tor Onion Services to proxy loc
 categories = ["command-line-utilities", "network-programming"]
 license = "MIT OR Apache-2.0"
 keywords = ["tor", "proxy", "onion", "tunnel", "cli"]
-include = ["src/**/*", "LICENSE-*", "README.md", "locales/**/*", "assets/**/*"]
-exclude = [ 
-    ".github/*",
-    "tests/*",
-    ".gitignore"
-]
+include = ["src/**/*", "LICENSE-*", "README.md", "locales/**/*",]
 
 [dependencies]
 # https://github.com/rusqlite/rusqlite for SQLite support
