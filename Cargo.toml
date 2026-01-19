@@ -29,7 +29,7 @@ tor-hsservice = { version = "0.37.0", features = ["restricted-discovery"] }
 # https://crates.io/crates/tor-cell
 tor-cell = "0.37.0"
 
-tor-rtcompat = { version = "0.37.0", features = ["tokio", "native-tls"] }
+tor-rtcompat = { version = "0.38.0", features = ["tokio", "native-tls"] }
 
 # Asynchronous runtime
 tokio = { version = "1", features = ["full"] }
