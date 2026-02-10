@@ -13,23 +13,23 @@ include = ["src/**/*", "LICENSE-*", "README.md", "locales/**/*",]
 
 [dependencies]
 # https://github.com/rusqlite/rusqlite for SQLite support
-rusqlite = { version = "0.37", features = ["bundled"] }
+rusqlite = { version = "0.38", features = ["bundled"] }
 
 # Main Arti client. Enabling onion services support
-arti-client = { version = "0.37", features = [ "full"] }  # "onion-service-client", "onion-service-service", "experimental-api", "tokio", "native-tls",
+arti-client = { version = "0.39", features = [ "full"] }  # "onion-service-client", "onion-service-service", "experimental-api", "tokio", "native-tls",
 
 # For Tor configuration https://docs.rs/tor-config/latest/tor_config/
-tor-config = "0.37.0"
+tor-config = "0.39.0"
 
-tor-hscrypto = "0.37.0"
+tor-hscrypto = "0.39.0"
 
 # https://crates.io/crates/tor-hsservice
-tor-hsservice = { version = "0.37.0", features = ["restricted-discovery"] }
+tor-hsservice = { version = "0.39.0", features = ["restricted-discovery"] }
 
 # https://crates.io/crates/tor-cell
-tor-cell = "0.37.0"
+tor-cell = "0.39.0"
 
-tor-rtcompat = { version = "0.37.0", features = ["tokio", "native-tls"] }
+tor-rtcompat = { version = "0.39.0", features = ["tokio", "native-tls"] }
 
 # Asynchronous runtime
 tokio = { version = "1", features = ["full"] }
@@ -86,7 +86,7 @@ x25519-dalek = { version = "2.0", features = ["static_secrets", "getrandom"] }
 base32 = "0.5.1"
 
 # Low-level crypto library used by Arti
-tor-llcrypto = "0.37.0"
+tor-llcrypto = "0.39.0"
 
 [lib]
 name = "onionize"           # The name of the library
@@ -94,9 +94,9 @@ path = "src/lib.rs"
 
 [dev-dependencies]
 # Library for mocking the runtime in tests
-tor-rtmock = "0.37.0" 
+tor-rtmock = "0.39.0" 
 # Utilities for IO testing
-tor-llcrypto = "0.37.0"
+tor-llcrypto = "0.39.0"
 
 [[bin]]
 name = "onionize" # The name of the binary
