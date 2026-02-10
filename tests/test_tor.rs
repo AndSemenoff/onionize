@@ -4,6 +4,7 @@ use arti_client::{TorClient, TorClientConfig};
 use onionize::tor;
 use rust_i18n::set_locale;
 // Import Runtime for generics and ToplevelBlockOn for calling
+use rand::RngExt;
 use tor_rtcompat::{Runtime, ToplevelBlockOn};
 use tor_rtmock::{MockRuntime, net::MockNetwork};
 
@@ -109,8 +110,9 @@ fn test_launch_onion_service_with_auth() {
     let client = create_mock_client(runtime.clone());
 
     // Generate a random keypair (x25519)
-    let mut rng = rand::rng();
-    let sk = curve25519::StaticSecret::random_from_rng(&mut rng);
+    let seed: [u8; 32] = rand::rng().random();
+    let sk = curve25519::StaticSecret::from(seed);
+
     let pk = curve25519::PublicKey::from(&sk);
 
     // Convert public key to HsClientDescEncKey format

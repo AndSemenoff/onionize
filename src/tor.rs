@@ -11,6 +11,7 @@ use tor_hsservice::config::restricted_discovery::HsClientNickname; // Type for t
 //use tor_hsservice::config::restricted_discovery::RestrictedDiscoveryConfigBuilder; // Config builder
 use tor_hsservice::{HsNickname, RunningOnionService, config::OnionServiceConfigBuilder}; // Public key type
 
+use rand::RngExt;
 use tor_rtcompat::Runtime;
 use tracing::info;
 
@@ -146,7 +147,8 @@ pub async fn launch_onion_service<R: Runtime>(
             .parse()
             .map_err(|_| anyhow::anyhow!(t!("cli.auth_error")))?;
 
-        let random_bytes = rand::random::<[u8; 3]>();
+        // let random_bytes = rand::random::<[u8; 3]>();
+        let random_bytes = rand::rng().random::<[u8; 3]>();
 
         let client_nickname = &format!("client-{}", hex::encode(random_bytes));
 
