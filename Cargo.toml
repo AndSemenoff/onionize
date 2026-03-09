@@ -16,20 +16,20 @@ include = ["src/**/*", "LICENSE-*", "README.md", "locales/**/*",]
 rusqlite = { version = "0.38", features = ["bundled"] }
 
 # Main Arti client. Enabling onion services support
-arti-client = { version = "0.39", features = [ "full"] }  # "onion-service-client", "onion-service-service", "experimental-api", "tokio", "native-tls",
+arti-client = { version = "0.40", features = [ "full"] }  # "onion-service-client", "onion-service-service", "experimental-api", "tokio", "native-tls",
 
 # For Tor configuration https://docs.rs/tor-config/latest/tor_config/
-tor-config = "0.39.0"
+tor-config = "0.40.0"
 
-tor-hscrypto = "0.39.0"
+tor-hscrypto = "0.40.0"
 
 # https://crates.io/crates/tor-hsservice
-tor-hsservice = { version = "0.39.0", features = ["restricted-discovery"] }
+tor-hsservice = { version = "0.40.0", features = ["restricted-discovery"] }
 
 # https://crates.io/crates/tor-cell
-tor-cell = "0.39.0"
+tor-cell = "0.40.0"
 
-tor-rtcompat = { version = "0.39.0", features = ["tokio", "native-tls"] }
+tor-rtcompat = { version = "0.40.0", features = ["tokio", "native-tls"] }
 
 # Asynchronous runtime
 tokio = { version = "1", features = ["full"] }
@@ -54,7 +54,7 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
 # https://docs.rs/safelog/latest/safelog/
-safelog = "0.7.2"
+safelog = "0.8.0"
 
 # Command line argument parsing
 # https://docs.rs/clap/latest/clap/
@@ -86,7 +86,7 @@ x25519-dalek = { version = "2.0", features = ["static_secrets", "getrandom"] }
 base32 = "0.5.1"
 
 # Low-level crypto library used by Arti
-tor-llcrypto = "0.39.0"
+tor-llcrypto = "0.40.0"
 
 [lib]
 name = "onionize"           # The name of the library
@@ -94,9 +94,9 @@ path = "src/lib.rs"
 
 [dev-dependencies]
 # Library for mocking the runtime in tests
-tor-rtmock = "0.39.0" 
+tor-rtmock = "0.40.0" 
 # Utilities for IO testing
-tor-llcrypto = "0.39.0"
+tor-llcrypto = "0.40.0"
 
 [[bin]]
 name = "onionize" # The name of the binary
