@@ -58,7 +58,7 @@ safelog = "0.8.0"
 
 # Command line argument parsing
 # https://docs.rs/clap/latest/clap/
-clap = { version = "4.5", features = ["derive"] }
+clap = { version = "4.6", features = ["derive"] }
 
 # https://github.com/longbridge/rust-i18n
 rust-i18n = "3"
