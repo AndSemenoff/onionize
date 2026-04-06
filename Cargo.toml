@@ -19,7 +19,7 @@ rusqlite = { version = "0.38", features = ["bundled"] }
 arti-client = { version = "0.40", features = [ "full"] }  # "onion-service-client", "onion-service-service", "experimental-api", "tokio", "native-tls",
 
 # For Tor configuration https://docs.rs/tor-config/latest/tor_config/
-tor-config = "0.40.0"
+tor-config = "0.41.0"
 
 tor-hscrypto = "0.40.0"
 
@@ -29,7 +29,7 @@ tor-hsservice = { version = "0.40.0", features = ["restricted-discovery"] }
 # https://crates.io/crates/tor-cell
 tor-cell = "0.40.0"
 
-tor-rtcompat = { version = "0.40.0", features = ["tokio", "native-tls"] }
+tor-rtcompat = { version = "0.41.0", features = ["tokio", "native-tls"] }
 
 # Asynchronous runtime
 tokio = { version = "1", features = ["full"] }
@@ -94,7 +94,7 @@ path = "src/lib.rs"
 
 [dev-dependencies]
 # Library for mocking the runtime in tests
-tor-rtmock = "0.40.0" 
+tor-rtmock = "0.41.0" 
 # Utilities for IO testing
 tor-llcrypto = "0.40.0"
 
