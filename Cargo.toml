@@ -16,7 +16,7 @@ include = ["src/**/*", "LICENSE-*", "README.md", "locales/**/*",]
 rusqlite = { version = "0.38", features = ["bundled"] }
 
 # Main Arti client. Enabling onion services support
-arti-client = { version = "0.40", features = [ "full"] }  # "onion-service-client", "onion-service-service", "experimental-api", "tokio", "native-tls",
+arti-client = { version = "0.41", features = [ "full"] }  # "onion-service-client", "onion-service-service", "experimental-api", "tokio", "native-tls",
 
 # For Tor configuration https://docs.rs/tor-config/latest/tor_config/
 tor-config = "0.40.0"
