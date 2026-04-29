@@ -1,4 +1,5 @@
 // src/utils.rs
+use std::borrow::Cow;
 use tracing::info;
 
 /// Sets up the locale for internationalization based on environment variables and system settings
@@ -15,14 +16,14 @@ pub fn setup_locale() {
     let available = rust_i18n::available_locales!();
 
     // Determine the final locale to use with fuzzy matching
-    let final_locale = if available.contains(&requested_locale.as_str()) {
+    let final_locale = if available.contains(&Cow::from(requested_locale.as_str())) {
         // Exact match found
         requested_locale
     } else {
         // Trying fuzzy match by language code only (e.g., "ru-RU" -> "ru")
         let lang_code = requested_locale.split(['-', '_']).next().unwrap_or("");
 
-        if available.contains(&lang_code) {
+        if available.contains(&Cow::from(lang_code)) {
             lang_code.to_string()
         } else {
             // Fallback to English if no match found

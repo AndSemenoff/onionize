@@ -32,7 +32,7 @@ tor-cell = "0.41.0"
 tor-rtcompat = { version = "0.41.0", features = ["tokio", "native-tls"] }
 
 # Asynchronous runtime
-tokio = { version = "1", features = ["full"] }
+tokio = { version = "1.52.1", features = ["full"] }
 tokio-native-tls = "0.3.1"
 
 # Utilities for working with futures/streams
@@ -58,14 +58,14 @@ safelog = "0.8.1"
 
 # Command line argument parsing
 # https://docs.rs/clap/latest/clap/
-clap = { version = "4.6", features = ["derive"] }
+clap = { version = "4.6.1", features = ["derive"] }
 
 # https://github.com/longbridge/rust-i18n
-rust-i18n = "3"
+rust-i18n = "4"
 
 # https://docs.rs/indicatif/latest/indicatif/
 indicatif = "0.18"
-rand = "0.10.0"
+rand = "0.10.1"
 hex = "0.4.3"
 
 # https://docs.rs/directories/latest/directories/
