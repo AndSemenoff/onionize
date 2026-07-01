@@ -21,7 +21,7 @@ jobs:
       # Step: Check out the repository
       # This step uses the actions/checkout action to clone the repository
       - name: Check out repository
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       # Step: Install Rust with Clippy
       - name: Install Rust toolchain
