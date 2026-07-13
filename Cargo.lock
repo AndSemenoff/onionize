@@ -184,7 +184,7 @@ dependencies = [
  "once_cell",
  "postage",
  "rand 0.9.2",
- "safelog",
+ "safelog 0.8.2",
  "serde",
  "tempfile",
  "thiserror 2.0.18",
@@ -810,13 +810,12 @@ dependencies = [
 
 [[package]]
 name = "console"
-version = "0.16.1"
+version = "0.16.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b430743a6eb14e9764d4260d4c0d8123087d504eeb9c48f2b2a5e810dd369df4"
+checksum = "4fe5f465a4f6fee88fad41b85d990f84c835335e85b5d9e6e63e0d06d28cba7c"
 dependencies = [
  "encode_unicode",
  "libc",
- "once_cell",
  "unicode-width",
  "windows-sys 0.61.2",
 ]
@@ -963,7 +962,22 @@ dependencies = [
  "cpufeatures 0.2.17",
  "curve25519-dalek-derive",
  "digest",
- "fiat-crypto",
+ "fiat-crypto 0.2.9",
+ "rustc_version",
+ "subtle",
+ "zeroize",
+]
+
+[[package]]
+name = "curve25519-dalek"
+version = "5.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b5eed333089e2e1c1ac8c6c0398e5e2497b4c9926ca6d0365ed1e099afa5bc23"
+dependencies = [
+ "cfg-if",
+ "cpufeatures 0.3.0",
+ "curve25519-dalek-derive",
+ "fiat-crypto 0.3.0",
  "rustc_version",
  "subtle",
  "zeroize",
@@ -1319,7 +1333,7 @@ version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "70e796c081cee67dc755e1a36a0a172b897fab85fc3f6bc48307991f64e4eca9"
 dependencies = [
- "curve25519-dalek",
+ "curve25519-dalek 4.1.3",
  "ed25519",
  "merlin",
  "rand_core 0.6.4",
@@ -1519,6 +1533,12 @@ name = "fiat-crypto"
 version = "0.2.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "28dea519a9695b9977216879a3ebfddf92f1c08c05d984f8996aecd6ecdc811d"
+
+[[package]]
+name = "fiat-crypto"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "64cd1e32ddd350061ae6edb1b082d7c54915b5c672c389143b9a63403a109f24"
 
 [[package]]
 name = "figment"
@@ -2261,9 +2281,9 @@ dependencies = [
 
 [[package]]
 name = "indicatif"
-version = "0.18.4"
+version = "0.18.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "25470f23803092da7d239834776d653104d551bc4d7eacaf31e6837854b8e9eb"
+checksum = "9433806cd6b4ec1aba79c021c7e4c58fb4c3b9977c085062e611ac929998fb0c"
 dependencies = [
  "console",
  "portable-atomic",
@@ -2801,10 +2821,10 @@ dependencies = [
  "hex",
  "indicatif",
  "qrcode",
- "rand 0.10.1",
+ "rand 0.10.2",
  "rusqlite",
  "rust-i18n",
- "safelog",
+ "safelog 0.9.0",
  "serde",
  "serde_json",
  "sys-locale",
@@ -2819,7 +2839,7 @@ dependencies = [
  "tor-rtmock",
  "tracing",
  "tracing-subscriber",
- "x25519-dalek",
+ "x25519-dalek 3.0.0",
 ]
 
 [[package]]
@@ -3303,9 +3323,9 @@ dependencies = [
 
 [[package]]
 name = "rand"
-version = "0.10.1"
+version = "0.10.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d2e8e8bcc7961af1fdac401278c6a831614941f6164ee3bf4ce61b7edb162207"
+checksum = "c7f5fa3a058cd35567ef9bfa5e75732bee0f9e4c55fa90477bef2dfcdbc4be80"
 dependencies = [
  "chacha20",
  "getrandom 0.4.1",
@@ -3614,6 +3634,19 @@ name = "safelog"
 version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "97a907e0d82c61b1b06a2030c968eb313dcf432686b77801a26bc4b206f96573"
+dependencies = [
+ "derive_more",
+ "educe",
+ "either",
+ "fluid-let",
+ "thiserror 2.0.18",
+]
+
+[[package]]
+name = "safelog"
+version = "0.9.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4c0812d386a9992c036500b92565c41f84c28fd2e48fe853a395c393261b730b"
 dependencies = [
  "derive_more",
  "educe",
@@ -4535,7 +4568,7 @@ dependencies = [
  "digest",
  "educe",
  "getrandom 0.4.1",
- "safelog",
+ "safelog 0.8.2",
  "thiserror 2.0.18",
  "tor-error",
  "tor-llcrypto",
@@ -4629,7 +4662,7 @@ dependencies = [
  "percent-encoding",
  "postage",
  "rand 0.9.2",
- "safelog",
+ "safelog 0.8.2",
  "serde",
  "serde_with",
  "thiserror 2.0.18",
@@ -4689,7 +4722,7 @@ dependencies = [
  "pin-project",
  "rand 0.9.2",
  "retry-error",
- "safelog",
+ "safelog 0.8.2",
  "serde",
  "thiserror 2.0.18",
  "tor-async-utils",
@@ -4858,7 +4891,7 @@ dependencies = [
  "postage",
  "rand 0.9.2",
  "rusqlite",
- "safelog",
+ "safelog 0.8.2",
  "scopeguard",
  "serde",
  "serde_json",
@@ -4954,7 +4987,7 @@ dependencies = [
  "pin-project",
  "postage",
  "rand 0.9.2",
- "safelog",
+ "safelog 0.8.2",
  "serde",
  "strum 0.28.0",
  "thiserror 2.0.18",
@@ -4995,7 +5028,7 @@ dependencies = [
  "postage",
  "rand 0.9.2",
  "retry-error",
- "safelog",
+ "safelog 0.8.2",
  "slotmap-careful",
  "strum 0.28.0",
  "thiserror 2.0.18",
@@ -5040,7 +5073,7 @@ dependencies = [
  "itertools 0.14.0",
  "paste",
  "rand 0.9.2",
- "safelog",
+ "safelog 0.8.2",
  "serde",
  "signature",
  "subtle",
@@ -5086,7 +5119,7 @@ dependencies = [
  "rand 0.9.2",
  "rand_core 0.9.3",
  "retry-error",
- "safelog",
+ "safelog 0.8.2",
  "serde",
  "serde_with",
  "strum 0.28.0",
@@ -5160,7 +5193,7 @@ dependencies = [
  "inventory",
  "itertools 0.14.0",
  "rand 0.9.2",
- "safelog",
+ "safelog 0.8.2",
  "serde",
  "signature",
  "ssh-key-fork-arti",
@@ -5195,7 +5228,7 @@ dependencies = [
  "derive_more",
  "hex",
  "itertools 0.14.0",
- "safelog",
+ "safelog 0.8.2",
  "serde",
  "serde_with",
  "strum 0.28.0",
@@ -5217,7 +5250,7 @@ dependencies = [
  "aes",
  "base64ct",
  "ctr",
- "curve25519-dalek",
+ "curve25519-dalek 4.1.3",
  "der-parser",
  "derive-deftly",
  "derive_more",
@@ -5235,7 +5268,7 @@ dependencies = [
  "rand_jitter",
  "rdrand",
  "rsa",
- "safelog",
+ "safelog 0.8.2",
  "serde",
  "sha1",
  "sha2",
@@ -5246,7 +5279,7 @@ dependencies = [
  "tor-error",
  "tor-memquota-cost",
  "visibility",
- "x25519-dalek",
+ "x25519-dalek 2.0.1",
  "zeroize",
 ]
 
@@ -5453,7 +5486,7 @@ dependencies = [
  "postage",
  "rand 0.9.2",
  "rand_core 0.9.3",
- "safelog",
+ "safelog 0.8.2",
  "slotmap-careful",
  "smallvec",
  "static_assertions",
@@ -5665,7 +5698,7 @@ dependencies = [
  "caret",
  "derive-deftly",
  "educe",
- "safelog",
+ "safelog 0.8.2",
  "subtle",
  "thiserror 2.0.18",
  "tor-bytes",
@@ -6464,9 +6497,21 @@ version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c7e468321c81fb07fa7f4c636c3972b9100f0346e5b6a9f2bd0603a52f7ed277"
 dependencies = [
- "curve25519-dalek",
+ "curve25519-dalek 4.1.3",
  "rand_core 0.6.4",
  "serde",
+ "zeroize",
+]
+
+[[package]]
+name = "x25519-dalek"
+version = "3.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e7e8131a03190127fb2263afc72b322ecadae46b6ff8c6f399ff5d02f5559af6"
+dependencies = [
+ "curve25519-dalek 5.0.0",
+ "getrandom 0.4.1",
+ "rand_core 0.10.0",
  "zeroize",
 ]
 
